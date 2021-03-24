@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1616207102641.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3866150543",
+    "id" : "556DACC0",
+    "lastKnownWriteTime" : 1616218902,
+    "last_content_update" : 1616218902844,
+    "path" : "C:/Users/Christopher/OneDrive/projects/career_projects/documents/jupyter_notebook_quickref/jupyter_notebook_quickref.Rmd",
+    "project_path" : "jupyter_notebook_quickref.Rmd",
+    "properties" : {
+        "cursorPosition" : "15,63",
+        "docOutlineVisible" : "1",
+        "scrollLine" : "0",
+        "source_window_id" : ""
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

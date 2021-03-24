@@ -1,0 +1,206 @@
+---
+title: "Jupyter Notebook quickref"
+author: "Christopher Johnson"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      smooth_scroll: true
+---
+
+## Exciting facts
+
+Here are a few exciting facts that motivate the use of Jupyter Notebook:
+
+* The name Jupyter is based on the first three kernels supported by IPython: **Ju**lia, **Pyt**hon, and **R**
+* Jupyter notebooks are simply JSON files with the extension `.ipynb`
+* [GitHub automatically renders Jupyter notebooks](https://docs.github.com/en/github/managing-files-in-a-repository/working-with-jupyter-notebook-files-on-github)
+
+## Install
+
+Jupyter Notebook is installed by default on Anaconda. If not using Anaconda, Jupyter Notebook can be installed with `pip install jupyter notebook`.
+
+## Serve
+
+To start the Jupyter Notebook server
+
+1. `cd` to project folder
+2. submit `jupyter notebook`
+
+Jupyter Notebook will launch in default browser at address `localhost:8888`, where `localhost` is the computer and `8888` is the port. The port number may be greater than 8888 if other ports are in use.
+
+## Interface
+
+The interface has the following tabs:
+
+* Files, all files in current directory
+* Running, all running notebooks
+* Clusters
+  * see [`ipyparallel`](https://ipyparallel.readthedocs.io/en/latest/intro.html)
+
+## Writing code
+
+When in a code cell, press tab to autocomplete. To view documentation for a function, press shift + tab once to glimpse at the tooltip and twice to grow the tooltip vertically.
+
+## Running cells
+
+There are a few ways to run cells. Press
+
+* Control + Enter to run the currently selected cell
+* Shift + Enter to run the currently selected cell and select the next cell
+* Alt + Enter to run the currently selected cell, insert a new cell below, and select it
+
+When a cell 
+
+* hasn't been ran, `In[ ]` will appear to its left
+* has been ran, `Out[i]` will appear to its left, where `i` is the order it was submitted
+
+If a cell takes a bit to run, a few indicators are provided:
+
+* the icon of the browser tab changes to an hourglass
+* a solid circle appears next to the kernel
+* `In[*]` appears next to the cell
+
+If the last statement isn't one of assignment and has a print method, it will be printed. This is not true for other lines in the cell. Printing intermediate variables for inspection or display may necessitate breaking code up between cells. The only other option to display intermediate objects is to explicitly `print()` them.
+
+For example, let a cell's contents be
+
+    x = 2
+    x
+    y = 3
+    y
+    
+When this cell is ran, only `y` will be printed.
+
+## Keyboard shortcuts
+
+Press H to show shortcuts.
+
+There are two modes in Jupyter Notebooks:
+
+* edit mode (cells are outlined in green)
+* command (cells are outlined in blue)
+
+If in 
+
+* command mode, press Enter to switch to edit mode
+* edit mode, press Esc to switch to command mode
+
+### Command mode shortcuts
+
+key       | action
+----------|-----------------------------------
+a         | insert cell above
+b         | insert cell below
+l         | toggle line numbers for code cells
+y         | change cell to code
+m         | change cell to Markdown
+d, d      | delete cell
+z         | undo deletion of cell
+x         | cut cell
+Shift + v | paste cell above
+v         | paste cell below
+
+### Edit mode shortcuts
+
+key              | action
+-----------------|-----------------
+Tab              | complete code
+Shift + Tab      | tooltip
+Ctrl + ]         | indent
+Ctrl + [         | dedent
+Ctrl + Home      | cell start
+Ctrl + End       | cell end
+Ctrl + Shift + P | command palette
+
+## Magic
+
+There are two types of [magic](https://ipython.readthedocs.io/en/stable/interactive/magics.html):
+
+* line magic start with `%` 
+* cell magic start with `%%`
+
+### `%timeit` and `%%timeit`
+
+Let `my_fun()` be a function. `%timeit my_fun()` will speed test the function.
+
+To speed test an entire cell
+
+    %%timeit
+    
+    # Code goes here
+    
+### `%matplotlib`
+
+See ["What is a backend?"](https://matplotlib.org/2.0.2/faq/usage_faq.html)
+
+Include the following magic to produce high-quality images
+
+    %matplotlib inline
+    %config InlineBackend.figure_format = "retina"
+
+### `%pdb`
+
+Including `%pdb` allows one to use the interactive Python debugger in Jupyter. Press `q` to quit debugging.
+
+See the [`pdb` official documentation](https://docs.python.org/3/library/pdb.html).
+
+## Converting Jupyter Notebooks
+
+Jupyter Notebooks can be converted to the following formats:
+
+* `html`
+* `latex` 
+* `pdf` (PDF via $\LaTeX$)
+* `webpdf` 
+* `slides` (Reveal.js HTML slideshow)
+* `markdown` to render to [Markdown](https://daringfireball.net/projects/markdown/), useful for blogs
+* `asciidoc`
+* `rst` for [reST](https://docutils.sourceforge.io/rst.html), useful for documentation
+* `script`
+* `notebook`
+
+To convert, use `jupyter nbconvert --to format name_of_notebook.ipynb`. If spaces are used in filenames, escape them. For example, if the filename was "name of notebook.ipynb", use `jupyter nbconvert --to format name\ of\ notebook.ipynb`.
+
+See the [`nbconvert` official documentation](https://nbconvert.readthedocs.io/en/latest/usage.html).
+
+### Slideshows
+
+When in a cell, click View > Cell Toolbar > Slideshow. For that cell, a Slide Type dropdown appears. The options are
+
+* Slide (left-to-right navigation)
+* Sub-Slide (up-to-down navigation)
+* Fragment (invisible to visible)
+* Skip
+* Notes (speaker notes)
+
+To render the slides,
+
+    jupyter nbconvert notebook.ipynb --to slides --post serve
+
+## Extensions
+
+### Notebook Conda
+
+Notebook Conda allows environment management (and more) via Jupyter Notebooks. One can create a new environment, or for existing environments, install packages, update packages, export environments, etc. Installing Notebook Conda adds a tab labeled "Conda". To install Notebook Conda, submit `conda install nb_conda` in the Ananconda Prompt.
+
+### Additional kernels
+
+[Additional kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) are available to install. Jupyter defines kernels as
+
+> *programming language specific* processes that run independently and interact with the Jupyter Applications and their user interfaces.
+
+## Sharing
+
+### Anaconda.org
+
+[Anaconda.org](https://anaconda.org/) is a service for sharing notebooks (in addition to packages, projects, and environments).
+
+### `nbviewer`
+
+Jupyter provides `nbviewer` to [render and host a Jupyter Notebook](http://nbviewer.jupyter.org/) so it may easily be viewed by others.
+
+### Voil&aacute;
+
+[Voil&aacute;](https://voila.readthedocs.io/en/stable/using.html) can convert Jupyter Notebooks to interactive dashboards. To install Voil&aacute;, submit `conda install -c conda-forge voila`.
