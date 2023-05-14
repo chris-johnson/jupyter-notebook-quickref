@@ -204,3 +204,33 @@ Jupyter provides `nbviewer` to [render and host a Jupyter Notebook](http://nbvie
 ### Voil&aacute;
 
 [Voil&aacute;](https://voila.readthedocs.io/en/stable/using.html) can convert Jupyter Notebooks to interactive dashboards. To install Voil&aacute;, submit `conda install -c conda-forge voila`.
+
+<!-- Additional content from another doc
+
+## Oh, oh, oh, it's magic, *you know*
+
+`!` invokes the command line (CL)
+`$` accesses variables from the notebook environment and passes them to the CL
+
+https://realpython.com/python-counter/
+
+!pygmentize train/model.py
+
+To get help, use %magic and %quickref
+
+To debug a cell, %debug
+To automatically enter debugging when an exception occurs, use %pdb anywhere <!-- I assume
+
+List variables in the workspace with %who, %who_ls, or %whos (increasing verbosity)
+To delete a variable `my_var`, use %xdel my_var <!-- delete only one, or multiple variables?
+To delete all variables, use %reset
+
+To run an external script, use %run my_script.py
+
+%hist
+
+%pastebin 1-3 copies cells 1 through 3, uploads them to dpaste.com, and returns a URL
+it uses history, so deleted cells might be copied
+to preview what is copied, use %history 1-3
+
+-->
